@@ -1,0 +1,144 @@
+.food-management {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    margin-top: -20px;
+    padding: 40px;
+    background-color: #fafafa;
+    min-height: 23vh;
+    width: 125%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.removeFood-label {
+    margin-top: 0px;
+}
+
+input[type='text'],
+input[type='number'],
+select {
+
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    color: #555;
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+}
+
+button[type='submit'] {
+    background-color: #6EC130;
+    color: #fff;
+    font-size: 15px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+    text-shadow: 1px 1px 0 #4B8E0F;
+}
+
+button[type='submit']:hover {
+    background-color: #4B8E0F;
+}
+
+.addBtn {
+    margin-bottom: 35px;
+}
+
+.updateBtn {
+    margin-bottom: 25px;
+}
+
+.addlabel {
+    margin-top: -25px;
+}
+
+.upRemlabel {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.urlInputBox {
+    margin-left: 10px;
+}
+
+.selectMealBox {
+    width: 200px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .search-food {
+        padding: 20px;
+    }
+
+    .food-management {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    input[type='text'],
+    input[type='number'],
+    select {
+        font-size: 16px;
+        padding: 10px;
+        width: 80%;
+    }
+
+    button[type='submit'] {
+        font-size: 16px;
+        padding: 12px 22px;
+    }
+}

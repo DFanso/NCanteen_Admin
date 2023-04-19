@@ -26,6 +26,17 @@ function FoodManagement() {
 
   async function handleAddFoodSubmit(event) {
     event.preventDefault();
+    /**/
+    if (!addFoodName || !addQuantity || !addPrice || !addMealType || !addURL) {
+      alert('Please fill all fields');
+      return;
+    }
+    console.log(`Add Food Name: ${addFoodName}`);
+    console.log(`Add Quantity: ${addQuantity}`);
+    console.log(`Add Price: ${addPrice}`);
+    console.log(`Add Meal Type: ${addMealType}`);
+    console.log(`Add URL: ${addURL}`);
+
 
     const token = localStorage.getItem("token");
 
@@ -45,6 +56,7 @@ function FoodManagement() {
       });
 
       console.log("Food item added successfully", response.data);
+      alert('Added Successfully');
     } catch (error) {
       console.error("Error adding food item", error);
     }
@@ -52,6 +64,14 @@ function FoodManagement() {
 
   async function handleUpdateFoodSubmit(event) {
     event.preventDefault();
+    /**/
+    if (!updateFoodId) {
+      alert('Please enter the food ID');
+      return;
+    }
+    console.log(`Update Food ID: ${updateFoodId}`);
+
+
 
     const token = localStorage.getItem("token");
 
@@ -71,6 +91,7 @@ function FoodManagement() {
       );
 
       console.log("Food item updated successfully", response.data);
+      alert('Updated Successfully');
     } catch (error) {
       console.error("Error updating food item", error);
     }
@@ -78,6 +99,17 @@ function FoodManagement() {
 
   async function handleRemoveFoodSubmit(event) {
     event.preventDefault();
+    /**/
+    if (!removeFoodId) {
+      alert('Please enter the food ID');
+      return;
+    }
+    console.log(`Remove Food ID: ${removeFoodId}`);
+
+
+
+
+
 
     const token = localStorage.getItem("token");
 
@@ -87,6 +119,8 @@ function FoodManagement() {
       });
 
       console.log("Food item removed successfully", response.data);
+      alert('Removed Successfuly');
+
     } catch (error) {
       console.error("Error removing food item", error);
     }

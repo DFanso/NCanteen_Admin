@@ -39,7 +39,7 @@ function Login() {
         <h1 className="login-heading">Login</h1>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Username</label>
             <input
               type="text"
               id="email"

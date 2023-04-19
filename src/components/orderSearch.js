@@ -1,57 +1,121 @@
-import React, { useState } from 'react';
-import './orderSearch.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "./orderSearch.css";
 
 function OrderHistory() {
-    const [searchTerm, setSearchTerm] = useState(''); // state to track search term
-    const orderHistoryData = []; // array to hold order history data
+  const [searchTerm, setSearchTerm] = useState("");
+  const [orderHistoryData, setOrderHistoryData] = useState([]);
 
-    function handleInputChange(event) {
-        setSearchTerm(event.target.value); // update search term when input changes
+  async function handleUpdateStatus(orderId, status) {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.put(
+        `http://localhost:3000/api/checkouts/update/${orderId}`,
+        { status: status },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (response.data.order) {
+        const updatedOrders = orderHistoryData.map((order) =>
+          order._id === response.data.order._id ? response.data.order : order
+        );
+        setOrderHistoryData(updatedOrders);
+      }
+    } catch (error) {
+      console.error("Error updating order:", error);
     }
+  }
 
-    function handleSubmit(event) {
-        event.preventDefault(); // prevent default form submission behavior
-        console.log(`Search term: ${searchTerm}`); // replace with your search functionality
+  function handleInputChange(event) {
+    setSearchTerm(event.target.value);
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `http://localhost:3000/api/order-history/fetch/${searchTerm}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (response.data.order) {
+        setOrderHistoryData([response.data.order]);
+      } else {
+        setOrderHistoryData([]);
+      }
+    } catch (error) {
+      console.error("Error fetching order:", error);
+      setOrderHistoryData([]);
     }
+  }
 
-    return (
-        <div className="order-history">
-            <div className="search-container">
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="search-input">Search for order:</label>
-                    <input
-                        type="text"
-                        id="search-input"
-                        value={searchTerm}
-                        onChange={handleInputChange}
-                        placeholder="Enter order ID"
-                    />
-                    <button type="submit" style={{ backgroundColor: '#6EC130' }}>
-                        Search
-                    </button>
-                </form>
+  return (
+    <div className="order-history">
+      <div className="search-container">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="search-input">Search for order:</label>
+          <input
+            type="text"
+            id="search-input"
+            value={searchTerm}
+            onChange={handleInputChange}
+            placeholder="Enter order ID"
+          />
+          <button type="submit" style={{ backgroundColor: "#6EC130" }}>
+            Search
+          </button>
+        </form>
+      </div>
+      <div className="order-list">
+        {orderHistoryData.map((order) => (
+          <div className="order-item" key={order._id}>
+            <br></br>
+            <div className="order-header">
+              <span className="order-id">Order ID: {order._id}</span>
+              <br></br>
+              <span className="order-date">Date: {order.createdAt}</span>{" "}
+              <br></br>
+              <span className="order-date">Status: {order.status}</span>{" "}
+              <br></br>
+              <span className="order-total">
+                Total: ${(order.price ?? 0).toFixed(2)}
+              </span>
             </div>
-            <div className="order-list">
-                {orderHistoryData.map((order) => (
-                    <div className="order-item" key={order.id}>
-                        <div className="order-header">
-                            <span className="order-id">Order ID: {order.id}</span>
-                            <span className="order-date">Date: {order.date}</span>
-                            <span className="order-total">Total: ${order.total.toFixed(2)}</span>
-                        </div>
-                        <div className="order-items">
-                            <span className="order-item-label">Items: </span>
-                            <ul className="order-item-list">
-                                {order.items.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
+            <div className="order-items">
+              <span className="order-item-label">Items: </span>
+              <ul className="order-item-list">
+                {order.items.map((item, index) => (
+                  <li key={index}>
+                    {item.name} - Quantity: {item.quantity}
+                  </li>
                 ))}
+              </ul>
             </div>
-        </div>
-    );
+            {order.status === "Pending" && (
+              <div className="order-status-buttons">
+                <button
+                  onClick={() => handleUpdateStatus(order._id, "Delivered")}
+                >
+                  Delivered
+                </button>
+                <button
+                  onClick={() => handleUpdateStatus(order._id, "Canceled")}
+                >
+                  Canceled
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default OrderHistory;

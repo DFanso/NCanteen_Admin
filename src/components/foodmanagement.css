@@ -77,7 +77,7 @@ button[type="submit"]:hover {
 }
 
 .updateBtn {
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 }
 
 .addlabel {
@@ -139,6 +139,7 @@ button[type="submit"]:hover {
     padding: 12px 22px;
   }
 }
+
 .error-message {
   color: red;
   font-size: 0.8rem;

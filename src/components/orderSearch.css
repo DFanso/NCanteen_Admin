@@ -71,6 +71,57 @@ button[type='submit']:hover {
     background-color: #4B8E0F;
 }
 
+
+.order-item {
+    background-color: #f4f4f4;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.order-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.order-id,
+.order-date,
+.order-status,
+.order-total {
+    font-weight: bold;
+    color: rgb(0, 100, 0);
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.order-item-label {
+    margin-top: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #6EC130;
+}
+
+.order-item-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #6EC130;
+}
+
+.order-item-list li {
+    margin-bottom: 5px;
+}
+
+
 @media screen and (max-width: 768px) {
     .order-history {
         padding: 20px;

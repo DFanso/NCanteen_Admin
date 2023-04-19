@@ -34,6 +34,11 @@ function OrderHistory() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    if (!searchTerm) {
+      alert('Please enter the Order ID');
+      return;
+    }
+    console.log(`Update Order ID: ${searchTerm}`);
 
     try {
       const token = localStorage.getItem("token");

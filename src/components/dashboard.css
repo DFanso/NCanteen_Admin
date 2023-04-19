@@ -24,6 +24,7 @@
 }
 
 .dashboard-content {
+    padding-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,6 +35,7 @@
 
 
 .dashboard-main {
+
     padding: 20px;
     flex: 1;
     display: flex;

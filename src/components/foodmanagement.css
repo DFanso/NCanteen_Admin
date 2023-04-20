@@ -109,6 +109,25 @@ button[type="submit"]:hover {
   width: 200px;
 }
 
+.order-cancelled-button {
+  background-color: #d9534f;
+  color: #fff;
+  margin-left: 5px;
+  /* font-size: 15px;
+  padding: 8px 12px; */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+  text-shadow: 1px 1px 0 #4b8e0f;
+
+}
+
+.order-cancelled-button:hover {
+  background-color: #922724;
+}
+
 @media screen and (max-width: 768px) {
   .search-food {
     padding: 20px;

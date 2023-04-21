@@ -17,7 +17,7 @@ function Sidebar() {
                 </li>
                 <li>
                     <NavLink to="/dashboard/search-food" activeClassName="active">
-                        Search Food
+                        Food Items{/* Search Food */}
                     </NavLink>
                 </li>
                 {/* Add other navigation items here */}

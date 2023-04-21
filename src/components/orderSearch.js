@@ -109,7 +109,7 @@ function OrderHistory() {
                 >
                   Delivered
                 </button>
-                <button
+                <button className="order-cancelled-button"
                   onClick={() => handleUpdateStatus(order._id, "Canceled")}
                 >
                   Canceled

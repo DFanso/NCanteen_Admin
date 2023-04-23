@@ -10,7 +10,7 @@ function AllOrderHistory() {
       const token = localStorage.getItem("token");
       try {
         const response = await axios.get(
-          "http://20.2.80.190:1214/api/order-history/canteen/id",
+          "http://localhost:1214/api/order-history/canteen/id",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

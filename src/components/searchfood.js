@@ -30,7 +30,7 @@ function SearchFood() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://20.2.80.190:1214/api/food-items/list/canteen", {
+      .get("http://localhost:1214/api/food-items/list/canteen", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

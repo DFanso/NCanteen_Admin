@@ -89,7 +89,7 @@ function OrderHistory() {
               <span className="order-date">Status: {order.status}</span>{" "}
               <br></br>
               <span className="order-total">
-                Total: ${(order.price ?? 0).toFixed(2)}
+                Total: Rs.{(order.price ?? 0).toFixed(2)}
               </span>
             </div>
             <div className="order-items">

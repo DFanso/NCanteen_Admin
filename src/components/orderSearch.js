@@ -10,7 +10,7 @@ function OrderHistory() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:3000/api/checkouts/update/${orderId}`,
+        `http://20.2.80.190:1214/api/checkouts/update/${orderId}`,
         { status: status },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -35,7 +35,7 @@ function OrderHistory() {
   async function handleSubmit(event) {
     event.preventDefault();
     if (!searchTerm) {
-      alert('Please enter the Order ID');
+      alert("Please enter the Order ID");
       return;
     }
     console.log(`Update Order ID: ${searchTerm}`);
@@ -43,7 +43,7 @@ function OrderHistory() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:3000/api/order-history/fetch/${searchTerm}`,
+        `http://20.2.80.190:1214/api/order-history/fetch/${searchTerm}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -89,7 +89,7 @@ function OrderHistory() {
               <span className="order-date">Status: {order.status}</span>{" "}
               <br></br>
               <span className="order-total">
-                Total: Rs. {(order.price ?? 0).toFixed(2)}
+                Total: Rs.{(order.price ?? 0).toFixed(2)}
               </span>
             </div>
             <div className="order-items">
@@ -109,7 +109,8 @@ function OrderHistory() {
                 >
                   Delivered
                 </button>
-                <button className="order-cancelled-button"
+                <button
+                  className="order-cancelled-button"
                   onClick={() => handleUpdateStatus(order._id, "Canceled")}
                 >
                   Canceled

@@ -10,7 +10,7 @@ function OrderHistory() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://20.2.80.190:1214/api/checkouts/update/${orderId}`,
+        `http://159.89.203.249:2001/api/checkouts/update/${orderId}`,
         { status: status },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -43,7 +43,7 @@ function OrderHistory() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://20.2.80.190:1214/api/order-history/fetch/${searchTerm}`,
+        `http://159.89.203.249:2001/api/order-history/fetch/${searchTerm}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

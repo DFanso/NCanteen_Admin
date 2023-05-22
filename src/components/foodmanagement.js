@@ -3,7 +3,7 @@ import "./foodmanagement.css";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://20.2.80.190:1214/api", // Updated baseURL
+  baseURL: "http://159.89.203.249:2001/api", // Updated baseURL
 });
 
 function FoodManagement() {

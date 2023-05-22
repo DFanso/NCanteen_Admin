@@ -13,7 +13,7 @@ function Login() {
     // validate login credentials
     try {
       const response = await axios.post(
-        "http://20.2.80.190:1214/api/canteen/login",
+        "http://159.89.203.249:2001/api/canteen/login",
         {
           // Replace 'http://your_backend_api_url/login' with the correct API URL
           username: email,
